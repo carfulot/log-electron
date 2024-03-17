@@ -9,7 +9,7 @@ const isMain = typeof process === 'object' && process.type === 'browser';
 
 if (isRenderer) {
   // Makes sense when contextIsolation/sandbox disabled
-  require('./renderer/electron-log-preload');
+  require('./renderer/log-electron-preload');
   module.exports = require('./renderer');
 } else if (isMain) {
   module.exports = require('./main');

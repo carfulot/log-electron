@@ -30,7 +30,7 @@ function remoteTransportFactory(logger) {
     processErrorFn({ error }) {
       logger.processMessage(
         {
-          data: [`electron-log: can't POST ${transport.url}`, error],
+          data: [`log-electron: can't POST ${transport.url}`, error],
           level: 'warn',
         },
         { transports: ['console', 'file'] },

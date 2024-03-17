@@ -1,6 +1,6 @@
 # Catching errors
 
-electron-log can be used to collect all unhandled errors/rejections
+log-electron can be used to collect all unhandled errors/rejections
 
 To initialize catching, call the `log.errorHandler.startCatching` method. It
 should be done in both main and renderer processes if you want to collect logs

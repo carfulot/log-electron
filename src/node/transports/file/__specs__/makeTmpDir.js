@@ -9,7 +9,7 @@ module.exports = makeTmpDir;
 
 function makeTmpDir(createFolderOnInit) {
   createFolderOnInit = createFolderOnInit === undefined || createFolderOnInit;
-  const dirPath = path.join(os.tmpdir(), 'electron-log-tests');
+  const dirPath = path.join(os.tmpdir(), 'log-electron-tests');
 
   if (createFolderOnInit) {
     fs.mkdirSync(dirPath, { recursive: true });

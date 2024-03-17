@@ -1,5 +1,5 @@
 {
-  "name": "electron-log-e2e-isolation-sandbox",
+  "name": "log-electron-e2e-isolation-sandbox",
   "version": "1.0.0",
   "private": true,
   "main": "main.js",

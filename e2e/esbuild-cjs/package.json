@@ -1,5 +1,5 @@
 {
-  "name": "electron-log-e2e-esbuild-cjs",
+  "name": "log-electron-e2e-esbuild-cjs",
   "version": "1.0.0",
   "private": true,
   "main": "dist/main.js",

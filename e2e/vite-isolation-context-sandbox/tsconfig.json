@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "paths": {
-      "electron-log": ["../../src/index.js"],
+      "log-electron": ["../../src/index.js"],
     }
   },
   "include": ["src", "vite.config.ts"]

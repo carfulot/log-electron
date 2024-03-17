@@ -7,14 +7,14 @@ import electronRendererPlugin from 'vite-plugin-electron-renderer'
 const commonConfig: UserConfig = {
   resolve: {
     alias: {
-      'electron-log': path.resolve(__dirname, '../..'),
+      'log-electron': path.resolve(__dirname, '../..'),
     },
   },
   build: {
     minify: false,
     outDir: 'dist',
     commonjsOptions: {
-      include: /electron-log/,
+      include: /log-electron/,
     },
     rollupOptions: {
       external: ['electron', ...builtinModules]

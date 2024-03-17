@@ -11,14 +11,14 @@ There are a few ways how a renderer logger could be configured.
 ## 1. Most common case. Use some bundler and contextIsolation/sandbox enabled
 
 ```js
-import log from 'electron-log/main';
+import log from 'log-electron/main';
 
 log.initialize();
 ````
 
 **renderer.ts**
 ```typescript
-import log from 'electron-log/renderer';
+import log from 'log-electron/renderer';
 
 log.info('Log from the renderer');
 ````
@@ -43,7 +43,7 @@ to the `initizlize` function.
 
 **main.js**
 ```js
-import log from 'electron-log/main';
+import log from 'log-electron/main';
 
 log.initialize();
 ````
@@ -62,7 +62,7 @@ It's possible to collect logs written by `console.log` in the renderer process
 
 **main.js**
 ```js
-import log from 'electron-log/main';
+import log from 'log-electron/main';
 
 // It makes a renderer logger available trough a global electronLog instance
 log.initialize({ spyRendererConsole: true });
@@ -75,14 +75,14 @@ is received on the main side.
 
 ## Using IPC directly
 
-Starting from electron-log v5, an electron-log IPC call has a constant
+Starting from log-electron v5, an log-electron IPC call has a constant
 signature. So you can call it directly if you don't want to use a renderer-side
 logger instance for some reason:
 
 ```js
 import { ipcRenderer } from 'electron';
 
-ipcRenderer.send('__ELECTRON_LOG__', {
+ipcRenderer.send('__LOG_ELECTRON__', {
   // LogMessage-like object
   data: ['Log from a renderer'],
   level: 'info',

@@ -1,4 +1,4 @@
-# electron-log-e2e-esbuild-esm
+# log-electron-e2e-esbuild-esm
 
 Currently, it requires the following workaround for esbuild to make it work:
 

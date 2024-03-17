@@ -1,5 +1,5 @@
 {
-  "name": "electron-log-test-multiple-renderers",
+  "name": "log-electron-test-multiple-renderers",
   "version": "1.0.0",
   "private": true,
   "main": "main.js",

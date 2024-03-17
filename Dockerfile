@@ -14,7 +14,7 @@ RUN apt-get update -y && \
       xvfb &&\
     rm -rf /var/lib/apt/lists/*
 
-WORKDIR /src/electron-log
+WORKDIR /src/log-electron
 
 # npm dependencies
 COPY package.json package.json

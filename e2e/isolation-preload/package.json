@@ -1,5 +1,5 @@
 {
-  "name": "electron-log-test-isolation-preload",
+  "name": "log-electron-test-isolation-preload",
   "version": "1.0.0",
   "private": true,
   "main": "main.js",

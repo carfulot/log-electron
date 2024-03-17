@@ -1,5 +1,5 @@
 {
-  "name": "electron-log-e2e-vite-isolation-context-sandbox",
+  "name": "log-electron-e2e-vite-isolation-context-sandbox",
   "version": "1.0.0",
   "private": true,
   "main": "dist/main.js",

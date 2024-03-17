@@ -1,7 +1,7 @@
-# electron-log
-[![Tests](https://github.com/megahertz/electron-log/actions/workflows/tests.yml/badge.svg)](https://github.com/megahertz/electron-log/actions/workflows/tests.yml)
-[![NPM version](https://badge.fury.io/js/electron-log.svg)](https://badge.fury.io/js/electron-log)
-[![Downloads](https://img.shields.io/npm/dw/electron-log)](https://img.shields.io/npm/dw/electron-log)
+# log-electron
+[![Tests](https://github.com/carfulot/log-electron/actions/workflows/tests.yml/badge.svg)](https://github.com/carfulot/log-electron/actions/workflows/tests.yml)
+[![NPM version](https://badge.fury.io/js/log-electron.svg)](https://badge.fury.io/js/log-electron)
+[![Downloads](https://img.shields.io/npm/dw/log-electron)](https://img.shields.io/npm/dw/log-electron)
 
 Simple logging module Electron/Node.js/NW.js application.
 No dependencies. No complicated configuration.
@@ -14,20 +14,20 @@ By default, it writes logs to the following locations:
 
 ## Installation
 
-Starts from v5, electron-log requires Electron 13+ or
-Node.js 14+. Feel free to use electron-log v4 for older runtime. v4
+Starts from v5, log-electron requires Electron 13+ or
+Node.js 14+. Feel free to use log-electron v4 for older runtime. v4
 supports Node.js 0.10+ and almost any Electron build.
 
-Install with [npm](https://npmjs.org/package/electron-log):
+Install with [npm](https://npmjs.org/package/log-electron):
 
-    npm install electron-log
+    npm install log-electron
     
 ## Usage
 
 ### Main process
 
 ```js
-import log from 'electron-log/main';
+import log from 'log-electron/main';
 
 // Optional, initialize the logger for any renderer process
 log.initialize();
@@ -40,7 +40,7 @@ log.info('Log from the main process');
 If a bundler is used, you can just import the module:
 
 ```typescript
-import log from 'electron-log/renderer';
+import log from 'log-electron/renderer';
 log.info('Log from the renderer process');
 ```
 
@@ -56,18 +56,18 @@ process. [Read more](docs/initialize.md).
 ### Node.js and NW.js
 
 ```typescript
-import log from 'electron-log/node';
+import log from 'log-electron/node';
 log.info('Log from the nw.js or node.js');
 ```
 
-### electron-log v2.x, v3.x, v4.x
+### log-electron v2.x, v3.x, v4.x
 
 If you would like to upgrade to the latest version, read
 [the migration guide](docs/migration.md) and [the changelog](CHANGELOG.md).
 
 ### Log levels
 
-electron-log supports the following log levels:
+log-electron supports the following log levels:
 
     error, warn, info, verbose, debug, silly
 
@@ -155,7 +155,7 @@ easily override/add your own transport.
 
 ### Overriding console.log
 
-Sometimes it's helpful to use electron-log instead of default `console`. It's
+Sometimes it's helpful to use log-electron instead of default `console`. It's
 pretty easy:
 
 ```js
@@ -189,7 +189,7 @@ For DevTools console you can use other CSS properties.
 
 ### [Catch errors](docs/errors.md)
 
-electron-log can catch and log unhandled errors/rejected promises:
+log-electron can catch and log unhandled errors/rejected promises:
 
 `log.errorHandler.startCatching(options?)`;
 
@@ -223,7 +223,7 @@ is a function which is called on each transport call.
 You can create multiple logger instances with different settings:
 
 ```js
-import log from 'electron-log/main';
+import log from 'log-electron/main';
 
 const anotherLogger = log.create({ logId: 'anotherInstance' });
 ```
@@ -234,7 +234,7 @@ separately.
 ### Logging scopes
 
 ```js
-import log from 'electron-log/main';
+import log from 'log-electron/main';
 const userLog = log.scope('user');
 
 userLog.info('message with user scope');
@@ -243,5 +243,5 @@ userLog.info('message with user scope');
 
 ## Related
 
- - [electron-cfg](https://github.com/megahertz/electron-cfg) -
+ - [electron-cfg](https://github.com/carfulot/electron-cfg) -
    Settings for your Electron application.

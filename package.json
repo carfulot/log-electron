@@ -1,5 +1,5 @@
 {
-  "name": "electron-log",
+  "name": "log-electron",
   "version": "5.1.2",
   "description": "Just a simple logging module for your Electron application",
   "main": "src/index.js",
@@ -17,7 +17,7 @@
     "preversion": "npm run test:full"
   },
   "typings": "src/index.d.ts",
-  "repository": "megahertz/electron-log",
+  "repository": "carfulot/log-electron",
   "files": [
     "!**/__specs__",
     "!**/.*",
@@ -44,8 +44,9 @@
   ],
   "author": "Alexey Prokhorov",
   "license": "MIT",
-  "bugs": "https://github.com/megahertz/electron-log/issues",
-  "homepage": "https://github.com/megahertz/electron-log#readme",
+  "bugs": "https://github.com/carfulot/log-electron/issues",
+  "homepage": "https://github.com/carfulot/log-electron#readme",
+  "testing": "https://raw.githubusercontent.com/carfulot/log-electron/master/src/core/testing",
   "devDependencies": {
     "@types/node": "^20.10.6",
     "electron": "*",

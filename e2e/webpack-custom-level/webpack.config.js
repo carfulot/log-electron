@@ -11,7 +11,7 @@ module.exports = [
     target: 'electron-main',
     resolve: {
       alias: {
-        'electron-log': path.resolve('../..'),
+        'log-electron': path.resolve('../..'),
       },
     },
     stats: 'minimal',
@@ -24,7 +24,7 @@ module.exports = [
     target: 'electron-renderer',
     resolve: {
       alias: {
-        'electron-log': path.resolve('../..'),
+        'log-electron': path.resolve('../..'),
       },
     },
     stats: 'minimal',

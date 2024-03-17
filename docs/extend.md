@@ -1,6 +1,6 @@
-# Extending electron-log
+# Extending log-electron
 
-Each process in Electron has its own electron-log instance, so make sure you define a custom transport or hook in each process. It's a good idea to save such a code in a separated file and require it from inside each process.
+Each process in Electron has its own log-electron instance, so make sure you define a custom transport or hook in each process. It's a good idea to save such a code in a separated file and require it from inside each process.
 
 ## Transport
 
@@ -83,11 +83,11 @@ log.notice('New level added');
 
 Also, you can add TypeScript type definition:
 
-*electron-log.extend.d.ts:*
+*log-electron.extend.d.ts:*
 ```typescript
-import 'electron-log'
+import 'log-electron'
 
-declare module 'electron-log' {
+declare module 'log-electron' {
   interface LogFunctions {
     notice(...params: any[]): void;
   }

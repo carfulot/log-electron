@@ -35,7 +35,7 @@ function createDefaultLogger({ dependencies, initializeFn }) {
   defaultLogger.processInternalErrorFn = (e) => {
     defaultLogger.transports.console.writeFn({
       message: {
-        data: ['Unhandled electron-log error', e],
+        data: ['Unhandled log-electron error', e],
         level: 'error',
       },
     });
