@@ -1,6 +1,6 @@
 'use strict';
 
-const log = require('electron-log');
+const log = require('log-electron');
 
 log.notice('log from a renderer process');
 

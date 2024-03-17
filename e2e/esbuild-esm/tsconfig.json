@@ -5,7 +5,7 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "paths": {
-      "electron-log/*": ["../../*"]
+      "log-electron/*": ["../../*"]
     },
     "outDir": "dist",
   },

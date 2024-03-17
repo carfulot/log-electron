@@ -31,22 +31,22 @@ function initialize({ contextBridge, ipcRenderer }) {
   });
 
   ipcRenderer
-    .invoke('__ELECTRON_LOG__', { cmd: 'getOptions' })
+    .invoke('__LOG_ELECTRON__', { cmd: 'getOptions' })
     // eslint-disable-next-line no-console
     .catch((e) => console.error(new Error(
-      'electron-log isn\'t initialized in the main process. '
+      'log-electron isn\'t initialized in the main process. '
       + `Please call log.initialize() before. ${e.message}`,
     )));
 
   const electronLog = {
     sendToMain(message) {
       try {
-        ipcRenderer.send('__ELECTRON_LOG__', message);
+        ipcRenderer.send('__LOG_ELECTRON__', message);
       } catch (e) {
         // eslint-disable-next-line no-console
         console.error('electronLog.sendToMain ', e, 'data:', message);
 
-        ipcRenderer.send('__ELECTRON_LOG__', {
+        ipcRenderer.send('__LOG_ELECTRON__', {
           cmd: 'errorHandler',
           error: { message: e?.message, stack: e?.stack },
           errorName: 'sendToMain',

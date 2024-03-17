@@ -1,5 +1,5 @@
 {
-  "name": "electron-log-e2e-webpack-error-handler",
+  "name": "log-electron-e2e-webpack-error-handler",
   "version": "1.0.0",
   "private": true,
   "main": "main.js",

@@ -90,7 +90,7 @@ function ipcTransportRendererFactory(logger) {
     if (!window.__electronLog) {
       logger.processMessage(
         {
-          data: ['electron-log: logger isn\'t initialized in the main process'],
+          data: ['log-electron: logger isn\'t initialized in the main process'],
           level: 'error',
         },
         { transports: ['console'] },

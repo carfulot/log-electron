@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron';
-import * as log from 'electron-log';
+import * as log from 'log-electron';
 import path from 'path';
 
 async function createWindow() {

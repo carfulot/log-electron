@@ -602,7 +602,7 @@ declare namespace Logger {
     catchErrors(options?: ErrorHandlerOptions): ErrorHandler;
 
     /**
-     * Create a new electron-log instance
+     * Create a new log-electron instance
      */
     create(options: { logId: string }): this;
 

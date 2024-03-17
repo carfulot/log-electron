@@ -1,5 +1,5 @@
 {
-  "name": "electron-log-e2e-webpack-isolation-none",
+  "name": "log-electron-e2e-webpack-isolation-none",
   "version": "1.0.0",
   "private": true,
   "main": "main.js",

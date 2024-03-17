@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "paths": {
-      "electron-log/*": ["../../*"]
+      "log-electron/*": ["../../*"]
     },
   },
   "include": ["src"]

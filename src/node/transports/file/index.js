@@ -104,7 +104,7 @@ function fileTransportFactory(
   }
 
   function logConsole(message, error = null, level = 'error') {
-    const data = [`electron-log.transports.file: ${message}`];
+    const data = [`log-electron.transports.file: ${message}`];
 
     if (error) {
       data.push(error);

@@ -13,7 +13,7 @@ const defaultLogger = createDefaultLogger({
 
 module.exports = defaultLogger;
 
-externalApi.onIpc('__ELECTRON_LOG__', (_, message) => {
+externalApi.onIpc('__LOG_ELECTRON__', (_, message) => {
   if (message.scope) {
     defaultLogger.Logger.getInstance(message).scope(message.scope);
   }
@@ -25,7 +25,7 @@ externalApi.onIpc('__ELECTRON_LOG__', (_, message) => {
   });
 });
 
-externalApi.onIpcInvoke('__ELECTRON_LOG__', (_, { cmd = '', logId }) => {
+externalApi.onIpcInvoke('__LOG_ELECTRON__', (_, { cmd = '', logId }) => {
   switch (cmd) {
     case 'getOptions': {
       const logger = defaultLogger.Logger.getInstance({ logId });

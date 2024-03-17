@@ -1,5 +1,5 @@
 'use strict';
 
-const preload = require('./src/renderer/electron-log-preload');
+const preload = require('./src/renderer/log-electron-preload');
 
 module.exports = preload;

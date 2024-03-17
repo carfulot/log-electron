@@ -2,7 +2,7 @@
 
 ## 5.1.0
 
-- New entry point for NW.js / Node.js apps: `'electron-log/node'`
+- New entry point for NW.js / Node.js apps: `'log-electron/node'`
 
 ## 5.0.0
 
@@ -39,11 +39,11 @@
 ### Electron event logger
 
 To simplify app debugging the 
-[Electron event logging](https://github.com/megahertz/electron-log/blob/master/docs/events.md)
+[Electron event logging](https://github.com/carfulot/log-electron/blob/master/docs/events.md)
 was implemented.
 
 ## 4.4.0 
- - Disable auto-loading of electron-log in the main process for using by ipc
+ - Disable auto-loading of log-electron in the main process for using by ipc
    transport
 
 ## 4.3.0
@@ -107,7 +107,7 @@ was implemented.
 
 ## 3.0.0
  - Now IPC is used only for some transports, which are disabled for a
-   packaged application. So now electron-log works using almost the same
+   packaged application. So now log-electron works using almost the same
    way in the main and renderer processes. The reason - IPC is pretty slow
    and can freeze an application when there are a lot of calls.
  - File transport doesn't use `stream.Writable` anymore.
@@ -131,7 +131,7 @@ was implemented.
  - To disable a transport set its level to `false`.
  - Fix problems when this package is used from a renderer process.
  - Add Typescript definitions.
- - Add [log-s](https://github.com/megahertz/log-s) transport
+ - Add [log-s](https://github.com/carfulot/log-s) transport
    (experimental).
  - Fix file transport appName detection when an application is run
  in dev environment (through `electron .` or similar way)

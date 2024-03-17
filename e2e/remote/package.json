@@ -1,5 +1,5 @@
 {
-  "name": "electron-log-test-remote",
+  "name": "log-electron-test-remote",
   "version": "1.0.0",
   "private": true,
   "scripts": {

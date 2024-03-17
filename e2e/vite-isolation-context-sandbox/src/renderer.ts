@@ -1,4 +1,4 @@
-import * as log from 'electron-log';
+import * as log from 'log-electron';
 
 log.info('log from renderer');
 

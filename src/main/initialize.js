@@ -3,7 +3,7 @@
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const preloadInitializeFn = require('../renderer/electron-log-preload');
+const preloadInitializeFn = require('../renderer/log-electron-preload');
 
 module.exports = {
   initialize({
@@ -48,7 +48,7 @@ function initializePreload({
   try {
     preloadPath = path.resolve(
       __dirname,
-      '../renderer/electron-log-preload.js',
+      '../renderer/log-electron-preload.js',
     );
   } catch {
     // Ignore, the file is bundled to ESM
@@ -57,7 +57,7 @@ function initializePreload({
   if (!preloadPath || !fs.existsSync(preloadPath)) {
     preloadPath = path.join(
       externalApi.getAppUserDataPath() || os.tmpdir(),
-      'electron-log-preload.js',
+      'log-electron-preload.js',
     );
     const preloadCode = `
       try {

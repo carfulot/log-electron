@@ -10,6 +10,6 @@ module.exports = {
   },
 
   settings: {
-    'import/core-modules': ['electron-log'],
+    'import/core-modules': ['log-electron'],
   },
 };

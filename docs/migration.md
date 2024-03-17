@@ -2,9 +2,9 @@
 
 You can continue to use some older version or migrate to the latest. Here are
 documentation and code snapshot for older releases:
-[v2](https://github.com/megahertz/electron-log/tree/v2.2.17),
-[v3](https://github.com/megahertz/electron-log/tree/v3.0.9),
-[v4](https://github.com/megahertz/electron-log/tree/v4.4.8).
+[v2](https://github.com/carfulot/log-electron/tree/v2.2.17),
+[v3](https://github.com/carfulot/log-electron/tree/v3.0.9),
+[v4](https://github.com/carfulot/log-electron/tree/v4.4.8).
 
 If you would like to upgrade to the latest version, check
 [the changelog](../CHANGELOG.md) and migration guide below.
@@ -13,10 +13,10 @@ If you would like to upgrade to the latest version, check
 
 Node.js 14+ or Electron 13+ is required.
 
-`npm install electron-log@5`
+`npm install log-electron@5`
 
 In the latest few years many restrictions were added to a renderer process by
-default. It forces me to rethink electron-log architecture. So now the only
+default. It forces me to rethink log-electron architecture. So now the only
 way of implementing logging in a renderer process is move all the logic to the
 main process. 
 
@@ -27,9 +27,9 @@ it should be initialized in the main process before the first window is created:
 
 **main.js**
 ```js
-import log from 'electron-log/main';
+import log from 'log-electron/main';
 
-// It preloads electron-log IPC code in renderer processes
+// It preloads log-electron IPC code in renderer processes
 log.initialize();
 ````
 
@@ -37,7 +37,7 @@ After that, you can use the library as before.
 
 **renderer.ts**
 ```typescript
-import log from 'electron-log/renderer';
+import log from 'log-electron/renderer';
 
 log.info('Log from the renderer');
 ````
@@ -62,9 +62,9 @@ To make callback names more obvious, some options where renamed:
 
 ## Migration from v3 to v4
 
-`npm install electron-log@latest`
+`npm install log-electron@latest`
 
-If you just use electron-log with default configuration, you only need to know
+If you just use log-electron with default configuration, you only need to know
 that a default log file path was changed.
 
 ### File transport
@@ -114,14 +114,14 @@ If you change some options of these transport, just use the same options of
 
 ## Migration from v2 to v3
 
-`npm install electron-log@latest`
+`npm install log-electron@latest`
 
 In v3 each process is configured separately. So if you change some options, you
 should apply the changed both in main and renderer processes.
 
 Another changes:
 
- - require `electron-log/main` and `electron-log/renderer` is deprecated.
+ - require `log-electron/main` and `log-electron/renderer` is deprecated.
  - `transports.file.level` is default to 'silly'.
  - `transports.file.stream` and `streamConfig` options are removed. Instead, you
    can use one of the following options: `file`, `fileName`, `writeOptions`.
