@@ -153,6 +153,10 @@ Transport is just a function `(msg: LogMessage) => void`, so you can
 easily override/add your own transport.
 [More info](docs/extend.md#transport).
 
+#### Third-party transports
+
+- [Datadog](https://github.com/theogravity/log-electron-transport-datadog)
+
 ### Overriding console.log
 
 Sometimes it's helpful to use log-electron instead of default `console`. It's
@@ -239,6 +243,33 @@ const userLog = log.scope('user');
 
 userLog.info('message with user scope');
 // Prints 12:12:21.962 (user) › message with user scope
+```
+
+By default, scope labels are padded in logs. To disable it, set  
+`log.scope.labelPadding = false`.
+
+### Buffering
+
+It's like a transaction, you may add some logs to the buffer and then decide 
+whether to write these logs or not. It allows adding verbose logs only
+when some operations failed.
+
+```js
+import log from 'log-electron/main';
+
+log.buffering.begin();
+try {
+  log.info('First silly message');
+  // do somethings complex
+  log.info('Second silly message');
+  // do something else
+   
+  // Finished fine, we don't need these logs anymore
+  log.buffering.reject();
+} catch (e) {
+  log.buffering.commit();
+  log.warn(e);
+}
 ```
 
 ## Related

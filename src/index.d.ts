@@ -6,7 +6,15 @@ declare namespace Logger {
     'silly';
   type LevelOption = LogLevel | false;
 
-  type Format = (({ message: LogMessage }) => any[]) | string;
+  interface FormatParams {
+    data: any[];
+    level: LogLevel;
+    logger: Logger;
+    message: LogMessage;
+    transport: Transport;
+  }
+
+  type Format = string | ((params: FormatParams) => any[]);
 
   type FOpenFlags = 'r' | 'r+' | 'rs+' | 'w' | 'wx' | 'w+' | 'wx+' |
     'a' | 'ax' | 'a+' | 'ax+';
@@ -262,6 +270,12 @@ declare namespace Logger {
     resolvePathFn: (variables: PathVariables, message?: LogMessage) => string;
 
     /**
+     * Override appName used for resolving log path
+     * @param appName
+     */
+    setAppName(appName: string): void;
+
+    /**
      * Whether to write a log file synchronously. Default to true
      */
     sync: boolean;
@@ -350,6 +364,30 @@ declare namespace Logger {
     ipc: Transport;
 
     [key: string]: Transport | null;
+  }
+
+  interface Buffering {
+    /**
+     * Buffered log messages
+     */
+    buffer: LogMessage[];
+
+    enabled: boolean;
+
+    /**
+     * Start buffering log messages
+     */
+    begin(): void;
+
+    /**
+     * Stop buffering and process all buffered logs
+     */
+    commit(): void;
+
+    /**
+     * Stop buffering and discard all buffered logs
+     */
+    reject(): void;
   }
 
   interface Scope {
@@ -495,40 +533,29 @@ declare namespace Logger {
 
   type EventSource = 'app' | 'webContents';
 
+  interface EventFormatterInput {
+    args: unknown[];
+    event: object;
+    eventName: string;
+    eventSource: string;
+  }
+
   interface EventLoggerOptions {
     /**
      * String template or function which prepares event data for logging
      */
-    format?:
-      | string
-      | ((
-          args: {
-            eventName: string;
-            eventSource: EventSource;
-            handlerArgs: unknown[];
-          }
-        ) => unknown[]);
+    format?: string | ((input: EventFormatterInput) => unknown[]);
 
     /**
      * Formatter callbacks for a specific event
      */
     formatters?: Record<
       EventSource,
-      Record<
-        string,
-        (
-          args: {
-            args: unknown[];
-            event: object;
-            eventName: string;
-            eventSource: string;
-          }
-        ) => unknown
-      >
+      Record<string, (input: EventFormatterInput) => object | unknown[]>
     >;
 
     /**
-     * Allow to switch specific events on/off easily
+     * Allow switching specific events on/off easily
      */
     events?: Record<EventSource, Record<string, boolean>>;
 
@@ -550,6 +577,11 @@ declare namespace Logger {
   }
 
   interface Logger extends LogFunctions {
+    /**
+     * Buffering helper
+     */
+    buffering: Buffering;
+
     /**
      * Error handling helper
      */
