@@ -53,6 +53,14 @@ only log functions like `info`, `warn` and so on.
 There are a few other ways how a logger can be initialized for a renderer
 process. [Read more](docs/initialize.md).
 
+### Preload script
+
+To use the logger inside a preload script, use the 
+`log-electron/renderer` import. 
+There's also the `log-electron/preload` entrypoint, but it's used only as a 
+bridge between the main and renderer processes and doesn't export a logger. In
+most cases, you don't need this preload entrypoint.
+
 ### Node.js and NW.js
 
 ```typescript
@@ -153,6 +161,10 @@ Transport is just a function `(msg: LogMessage) => void`, so you can
 easily override/add your own transport.
 [More info](docs/extend.md#transport).
 
+#### Third-party transports
+
+- [Datadog](https://github.com/theogravity/electron-log-transport-datadog)
+
 ### Overriding console.log
 
 Sometimes it's helpful to use log-electron instead of default `console`. It's
@@ -239,6 +251,33 @@ const userLog = log.scope('user');
 
 userLog.info('message with user scope');
 // Prints 12:12:21.962 (user) › message with user scope
+```
+
+By default, scope labels are padded in logs. To disable it, set  
+`log.scope.labelPadding = false`.
+
+### Buffering
+
+It's like a transaction, you may add some logs to the buffer and then decide 
+whether to write these logs or not. It allows adding verbose logs only
+when some operations failed.
+
+```js
+import log from 'log-electron/main';
+
+log.buffering.begin();
+try {
+  log.info('First silly message');
+  // do somethings complex
+  log.info('Second silly message');
+  // do something else
+   
+  // Finished fine, we don't need these logs anymore
+  log.buffering.reject();
+} catch (e) {
+  log.buffering.commit();
+  log.warn(e);
+}
 ```
 
 ## Related
