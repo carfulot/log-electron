@@ -2,10 +2,16 @@
 
 /* eslint-disable no-console */
 
-const { concatFirstStringElements, format } = require('../transforms/format');
+const {
+  concatFirstStringElements,
+  format,
+} = require('../../core/transforms/format');
 const { maxDepth, toJSON } = require('../transforms/object');
-const { applyAnsiStyles, removeStyles } = require('../transforms/style');
-const { transform } = require('../transforms/transform');
+const {
+  applyAnsiStyles,
+  removeStyles,
+} = require('../../core/transforms/style');
+const { transform } = require('../../core/transforms/transform');
 
 const consoleMethods = {
   error: console.error,
@@ -55,7 +61,10 @@ function consoleTransportFactory(logger) {
 }
 
 function addTemplateColors({ data, message, transport }) {
-  if (transport.format !== DEFAULT_FORMAT) {
+  if (
+    typeof transport.format !== 'string'
+    || !transport.format.includes('%c')
+  ) {
     return data;
   }
 
