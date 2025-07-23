@@ -1,4 +1,5 @@
 try {
+console.log('insafe');
   globalThis.electron.app.whenReady().then(() => {
     try {
       const appname = app.getName()
