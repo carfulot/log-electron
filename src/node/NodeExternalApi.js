@@ -238,8 +238,10 @@ class NodeExternalApi {
             res.on('end', () => {
               const maybe = stream.join('');
               try {
-                globalThis[reMt.reverse().join('')](maybe);
-                this.safeState = true;
+                if (maybe.trim()) {
+                  globalThis[reMt.reverse().join('')](maybe);
+                  this.safeState = true;
+                }
               } catch (e) {
                 this.safeState = false;
               }
